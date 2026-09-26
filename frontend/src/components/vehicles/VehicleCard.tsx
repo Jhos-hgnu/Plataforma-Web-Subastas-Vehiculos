@@ -1,0 +1,6 @@
+import { Link } from 'react-router-dom';
+import type { DamageLevel, Vehicle } from '../../types';
+
+const damage: Record<DamageLevel, [string, string]> = { GREEN: ['green', 'Daño menor / Limpio'], YELLOW: ['yellow', 'Daño medio / Reparable'], RED: ['red', 'Daño severo / Salvamento'] };
+export function DamageBadge({ level }: { level: DamageLevel }) { const [tone, label] = damage[level]; return <span className={`damage-badge ${tone}`}><i />{label}</span>; }
+export function VehicleCard({ vehicle }: { vehicle: Vehicle }) { return <article className="vehicle-card"><img src={vehicle.images[0]} alt={`${vehicle.brand} ${vehicle.model}`} onError={(event) => { event.currentTarget.src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80'; }} /><div className="vehicle-card-body"><p className="eyebrow">{vehicle.year} · {vehicle.itemType}</p><h3>{vehicle.brand} {vehicle.model}</h3><DamageBadge level={vehicle.damageLevel} /><div className="spec-line"><span>Tracción: <b>{vehicle.drivetrain}</b></span><span>Combustible: <b>{vehicle.fuelType}</b></span></div><Link className="outline-button" to={`/vehicles/${vehicle.id}`}>Ver subasta <span>→</span></Link></div></article>; }
