@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+service-account*.json
+*serviceAccount*.json
+firebase-service-account*.json
