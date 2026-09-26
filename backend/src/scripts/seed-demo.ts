@@ -34,6 +34,7 @@ async function seed() {
     }
     console.log(`Ready: ${user.email}`);
   }
+  await firebase.close();
   await app.close();
 }
 

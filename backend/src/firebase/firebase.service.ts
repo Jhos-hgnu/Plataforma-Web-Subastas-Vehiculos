@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { App, cert, getApps, initializeApp } from 'firebase-admin/app';
+import { App, cert, deleteApp, getApps, initializeApp } from 'firebase-admin/app';
 import { Auth, getAuth } from 'firebase-admin/auth';
 import { Database, getDatabase } from 'firebase-admin/database';
 
@@ -24,5 +24,9 @@ export class FirebaseService {
     });
     this.auth = getAuth(this.app);
     this.database = getDatabase(this.app);
+  }
+
+  async close() {
+    await deleteApp(this.app);
   }
 }

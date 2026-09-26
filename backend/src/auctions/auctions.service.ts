@@ -43,7 +43,8 @@ export class AuctionsService {
         rejection = 'First bid must be greater than base price';
         return;
       }
-      if (publicState.hasBids && (amount <= publicState.currentAmount || amount < publicState.currentAmount * 1.1)) {
+      const minimumAmount = Math.round(publicState.currentAmount * 110) / 100;
+      if (publicState.hasBids && (amount <= publicState.currentAmount || amount < minimumAmount)) {
         rejection = 'Bid must be at least 10% above the current amount';
         return;
       }

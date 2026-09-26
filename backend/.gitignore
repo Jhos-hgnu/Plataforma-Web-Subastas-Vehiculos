@@ -7,3 +7,5 @@ coverage/
 service-account*.json
 *serviceAccount*.json
 firebase-service-account*.json
+firebase-adminsdk-*.json
+*firebase-adminsdk-*.json
